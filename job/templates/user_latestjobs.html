@@ -1,0 +1,55 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+<style>
+
+
+    .card {
+        width: calc(33.33% - 20px); /* Set the width to occupy 33.33% of the container minus margin */
+        margin: 10px; /* Add margin around the cards */
+        float: left; /* Float the cards to the left */
+        box-sizing: border-box; /* Include padding and border in the width */
+    }
+    .clearfix {
+        clear: both;
+    }
+</style>
+<marquee direction="right" style="font-family:'Monotype Corsiva';font-size:25px;color:white;background-color:#240A34;font-weight:bold;margin-top:0.5%">
+    Latest Jobs
+</marquee>
+<hr>
+
+<div class="container" style="height:700px;overflow-y: auto;">
+    {% for i in job %}
+    <div class="card">
+        <div class="card-header" style="background-color : #000080; color:white">
+            {{ i.recruiter.company }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">Location: {{ i.location }}</p>
+            <p class="card-text">Start Date: {{ i.start_date }}</p>
+            <p class="card-text">End Date: {{ i.end_date }}</p>
+        </div>
+        {% if i.id in li %}
+        <div class="card-footer text-center " style="font-weight:bold;font-size:20px;color:green;">
+             Applied
+        </div>
+        {% else %}
+         <div class="card-footer text-center">
+            <a href="{% url 'job_detail' i.id %}" class="btn btn-success btn-sm">Apply</a>
+        </div>
+        {% endif %}
+    </div>
+    {% if forloop.counter|divisibleby:3 %}
+        <div class="clearfix"></div> <!-- Clear float every third card -->
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+{% include 'footer.html' %}
+
+{% endblock %}
