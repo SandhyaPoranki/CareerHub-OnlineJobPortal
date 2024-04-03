@@ -24,3 +24,4 @@ Seamless application process with resume upload functionality for users.
 Comprehensive recruiter dashboard for managing job listings and applicant profiles.
 Admin dashboard for overseeing user and recruiter activities, with moderation and account management capabilities.
 
+##Check my Linkedin Post here for project demo with explanation:- https://www.linkedin.com/feed/update/urn:li:activity:7181301356480147457/
